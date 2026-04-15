@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>NúkEásy_Site</title>
+  <meta name="description" content="contact nuk on social media">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  
+  <link rel="icon" href="https://img2.pixhost.to/images/7203/715355959_sifah.jpg">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0f2a 0%, #0f172a 50%, #1a1a3e 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 10% 20%, rgba(239, 68, 68, 0.12) 0%, transparent 55%),
+                        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .linktree-card {
+      max-width: 520px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 56px;
+      box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .linktree-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 40px 60px -20px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-header {
+      padding: 2rem 2rem 1.2rem 2rem;
+      text-align: center;
+      background: linear-gradient(145deg, #ffffff, #fef7f7);
+    }
+
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .rounded-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.2), 0 0 0 3px #3b82f6, 0 0 0 6px #ef4444;
+      transition: all 0.3s ease;
+      background: #f1f5f9;
+    }
+
+    .rounded-logo:hover {
+      transform: scale(1.02);
+    }
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1e40af, #dc2626);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.25rem;
+    }
+
+    .bio {
+      color: #334155;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 0.3rem;
+      background: #f0f4fa;
+      display: inline-block;
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 0.75rem 0 0.5rem 0;
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+      backdrop-filter: blur(2px);
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: #1e293b;
+    }
+    .stat-item i {
+      font-size: 1rem;
+    }
+    .stat-item .count-number {
+      font-weight: 700;
+      color: #1e40af;
+      min-width: 2.2rem;
+      display: inline-block;
+      text-align: center;
+    }
+    .like-btn {
+      background: linear-gradient(145deg, #ffffff, #fef2f2);
+      border: 1px solid #fee2e2;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    /* Icon love sebelum di klik: hanya outline (regular) warna merah tipis */
+    .like-btn i {
+      color: #f87171;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .like-btn:hover {
+      background: #fef2f2;
+      border-color: #fecaca;
+      transform: scale(1.02);
+    }
+    .like-btn:active i {
+      transform: scale(1.2);
+    }
+    /* Setelah di klik: love menjadi solid (full red) */
+    .like-btn.liked i {
+      color: #ef4444;
+      font-weight: 900;
+    }
+    .like-btn.liked {
+      background: #fee2e2;
+      border-color: #fecaca;
+      cursor: default;
+      opacity: 0.9;
+    }
+    .like-btn.liked:hover {
+      transform: none;
+    }
+    .like-btn.liked i {
+      animation: heartPop 0.3s ease;
+    }
+    @keyframes heartPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+   
+
+    .links-container {
+      padding: 0.5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: white;
+      padding: 0.9rem 1.5rem;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      border: 1px solid #eef2f8;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      color: #1e293b;
+      width: 100%;
+      text-align: center;
+    }
+
+    .social-link i {
+      font-size: 1.5rem;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    .social-link span {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.02);
+      border-color: #cbd5e1;
+      box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.2);
+      background: #fefcfc;
+    }
+
+    .social-link:hover i {
+      transform: scale(1.08);
+    }
+
+    .social-link[data-platform="whatsapp"] i { color: #25D366; }
+    .social-link[data-platform="telegram"] i { color: #26A5E4; }
+    .social-link[data-platform="tiktok"] i { color: #000000; }
+    .social-link[data-platform="instagram"] i { color: #E4405F; }
+    .social-link[data-platform="youtube"] i { color: #FF0000; }
+
+    .social-link:active {
+      transform: scale(0.97);
+    }
+
+    .wa-channel {
+      background: linear-gradient(135deg, #3b82f6, #ef4444);
+      color: white;
+      border: none;
+      box-shadow: 0 10px 20px -10px rgba(59, 130, 246, 0.6);
+    }
+
+    .wa-channel i,
+    .wa-channel span {
+      color: white;
+    }
+
+    .wa-channel:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 15px 30px -10px rgba(239, 68, 68, 0.7);
+      background: linear-gradient(135deg, #2563eb, #dc2626);
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 1rem 1rem 1.6rem;
+      font-size: 0.7rem;
+      color: #5d6e8a;
+      background: #ffffffea;
+      border-top: 1px solid #edf2f7;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-note i {
+      color: #ef4444;
+      font-size: 0.7rem;
+    }
+
+.music-player-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto 20px auto;
+
+  /* DEFAULT (idle) */
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(239, 68, 68, 0.15));
+  
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  padding: 8px 16px 8px 20px;
+  border-radius: 80px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 15px rgba(59, 130, 246, 0.2);
+
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.music-player-wrapper:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(239, 68, 68, 0.25));
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* 🔥 SAAT PLAY */
+.music-player-wrapper.playing {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(239, 68, 68, 0.4));
+  border-color: rgba(59, 130, 246, 0.7);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(59, 130, 246, 0.6),
+    0 0 40px rgba(239, 68, 68, 0.5);
+}
+
+/* OPTIONAL: glow halus bergerak */
+.music-player-wrapper.playing {
+  animation: glowPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 
+      0 20px 40px rgba(0,0,0,0.3),
+      0 0 20px rgba(59,130,246,0.4),
+      0 0 25px rgba(239,68,68,0.3);
+  }
+  to {
+    box-shadow: 
+      0 25px 55px rgba(0,0,0,0.45),
+      0 0 35px rgba(59,130,246,0.7),
+      0 0 45px rgba(239,68,68,0.6);
+  }
+}
+
+/* EQUALIZER */
+.music-equalizer {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 28px;
+}
+
+.equalizer-bar {
+  width: 3px;
+  height: 12px;
+  background: linear-gradient(180deg, #3b82f6, #ef4444);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.music-equalizer.playing .equalizer-bar {
+  animation: equalizer 0.8s ease infinite alternate;
+}
+
+.music-equalizer.playing .equalizer-bar:nth-child(1) { animation-delay: 0s; height: 18px; }
+.music-equalizer.playing .equalizer-bar:nth-child(2) { animation-delay: 0.2s; height: 24px; }
+.music-equalizer.playing .equalizer-bar:nth-child(3) { animation-delay: 0.4s; height: 14px; }
+.music-equalizer.playing .equalizer-bar:nth-child(4) { animation-delay: 0.1s; height: 22px; }
+.music-equalizer.playing .equalizer-bar:nth-child(5) { animation-delay: 0.3s; height: 16px; }
+
+@keyframes equalizer {
+  0% { height: 8px; opacity: 0.5; }
+  100% { height: 22px; opacity: 1; }
+}
+
+    .progress-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: height 0.2s;
+    }
+
+    .progress-container:hover {
+      height: 6px;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #ef4444);
+      border-radius: 4px;
+      position: relative;
+      transition: width 0.05s linear;
+    }
+
+    .progress-fill::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s;
+      box-shadow: 0 0 8px #ef4444;
+    }
+
+    .progress-container:hover .progress-fill::after {
+      opacity: 1;
+    }
+
+    .time-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.3px;
+    }
+
+    .current-time, .duration-time {
+      font-family: monospace;
+    }
+
+    .play-pause-btn {
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .play-pause-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(145deg, #ffffff, #e8e8e8);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .play-pause-btn:active {
+      transform: scale(0.97);
+    }
+
+    .play-pause-btn i {
+      font-size: 16px;
+      color: red;
+      margin-left: 2px;
+    }
+
+    .music-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(239, 68, 68, 0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .music-icon i {
+      font-size: 14px;
+      color: #ef4444;
+      opacity: 0.8;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .music-equalizer.playing ~ .music-icon i {
+      animation: pulse 0.8s ease infinite;
+    }
+
+    @media (max-width: 480px) {
+      .linktree-card {
+        border-radius: 40px;
+      }
+      .profile-header {
+        padding: 1.5rem 1rem 1rem 1rem;
+      }
+      .links-container {
+        padding: 0.5rem 1.5rem 1.8rem 1.5rem;
+        gap: 0.9rem;
+      }
+      .rounded-logo {
+        width: 100px;
+        height: 100px;
+      }
+      .name {
+        font-size: 1.55rem;
+      }
+      .social-link {
+        padding: 0.75rem 1.2rem;
+        gap: 12px;
+      }
+      .social-link i {
+        font-size: 1.3rem;
+      }
+      .social-link span {
+        font-size: 0.9rem;
+      }
+      .music-player-wrapper {
+        padding: 6px 12px 6px 16px;
+        gap: 10px;
+      }
+      .play-pause-btn {
+        width: 38px;
+        height: 38px;
+      }
+      .play-pause-btn i {
+        font-size: 14px;
+      }
+      .music-icon {
+        width: 28px;
+        height: 28px;
+      }
+      .music-icon i {
+        font-size: 12px;
+      }
+      .time-info {
+        font-size: 9px;
+      }
+      .stats-row {
+        gap: 1rem;
+      }
+      .stat-item {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+  
+  <!-- STRONG ANTI COPY PROTECTION - VERSI DIPERBAIKI -->
+<script>
+(function() {
+    'use strict';
+    
+    // ========== LAPIS 1: HAPUS OBFUSCATE TEXT (TIDAK DIPERLUKAN) ==========
+    // function obfuscateText() sudah dihapus karena mengganggu tampilan
+    
+    // ========== LAPIS 2: Overlay Invisible untuk Mencegah Seleksi ==========
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 999999;
+        pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+    
+    // ========== LAPIS 3: Blokir Semua Event ==========
+    const blockEvents = ['copy', 'cut', 'paste', 'dragstart', 'drop', 'contextmenu', 'selectstart', 'selectionchange'];
+    blockEvents.forEach(eventType => {
+        document.addEventListener(eventType, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+    
+    // ========== LAPIS 4: Hapus Clipboard Data ==========
+    setInterval(() => {
+        try {
+            window.clipboardData && window.clipboardData.setData('text', '');
+            navigator.clipboard && navigator.clipboard.writeText('');
+        } catch(e) {}
+    }, 100);
+    
+    // ========== LAPIS 5: Blokir Shortcut Lebih Agresif ==========
+    const blockedKeys = [
+        'c', 'x', 'v', 's', 'p', 'u', 'a',
+        'F12', 'PrintScreen', 'Insert'
+    ];
+    
+    document.addEventListener('keydown', (e) => {
+        // Blokir Ctrl/Command + apapun
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir F12 dan tombol fungsi
+        if (blockedKeys.includes(e.key) || e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir Alt + apapun
+        if (e.altKey) {
+            e.preventDefault();
+            return false;
+        }
+    }, { capture: true });
+    
+    // ========== LAPIS 6: Deteksi dan Blokir DevTools ==========
+    let devtoolsDetected = false;
+    
+    function detectDevTools() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > 100 || heightDiff > 100 || window.Firebug) {
+            if (!devtoolsDetected) {
+                devtoolsDetected = true;
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:999999;font-size:20px;">🚫 Akses Ditolak - DevTools Terdeteksi 🚫</div>';
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 500);
+    
+    // ========== LAPIS 7: Mencegah Debugging ==========
+    console.log = function() {};
+    console.debug = function() {};
+    console.info = function() {};
+    
+    function disableBreakpoints() {
+        const startTime = Date.now();
+        debugger;
+        const endTime = Date.now();
+        if (endTime - startTime > 100) {
+            window.location.reload();
+        }
+    }
+    
+    setInterval(disableBreakpoints, 100);
+    
+    // ========== LAPIS 8: Enkripsi CSSOM ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        ::selection {
+            background: transparent !important;
+        }
+        
+        ::-moz-selection {
+            background: transparent !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // ========== LAPIS 9: Bersihkan Clipboard ==========
+    function clearClipboard() {
+        try {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('').catch(() => {});
+            }
+            if (window.clipboardData) {
+                window.clipboardData.setData('Text', '');
+            }
+        } catch(e) {}
+    }
+    
+    setInterval(clearClipboard, 500);
+    
+    // ========== LAPIS 10: Blokir Save Image ==========
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+    });
+    
+    // ========== LAPIS 11: Deteksi Bot ==========
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'php', 'java', 'perl', 'ruby', 'node'
+    ];
+    
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isBot = botPatterns.some(pattern => userAgent.includes(pattern));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Access Denied</h1>';
+        throw new Error('Bot detected');
+    }
+    
+    // ========== LAPIS 12: Cegah iframe ==========
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+    
+})();
+</script><!-- STRONG ANTI COPY PROTECTION - VERSI DIPERBAIKI -->
+<script>
+(function() {
+    'use strict';
+    
+    // ========== LAPIS 1: HAPUS OBFUSCATE TEXT (TIDAK DIPERLUKAN) ==========
+    // function obfuscateText() sudah dihapus karena mengganggu tampilan
+    
+    // ========== LAPIS 2: Overlay Invisible untuk Mencegah Seleksi ==========
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 999999;
+        pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+    
+    // ========== LAPIS 3: Blokir Semua Event ==========
+    const blockEvents = ['copy', 'cut', 'paste', 'dragstart', 'drop', 'contextmenu', 'selectstart', 'selectionchange'];
+    blockEvents.forEach(eventType => {
+        document.addEventListener(eventType, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+    
+    // ========== LAPIS 4: Hapus Clipboard Data ==========
+    setInterval(() => {
+        try {
+            window.clipboardData && window.clipboardData.setData('text', '');
+            navigator.clipboard && navigator.clipboard.writeText('');
+        } catch(e) {}
+    }, 100);
+    
+    // ========== LAPIS 5: Blokir Shortcut Lebih Agresif ==========
+    const blockedKeys = [
+        'c', 'x', 'v', 's', 'p', 'u', 'a',
+        'F12', 'PrintScreen', 'Insert'
+    ];
+    
+    document.addEventListener('keydown', (e) => {
+        // Blokir Ctrl/Command + apapun
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir F12 dan tombol fungsi
+        if (blockedKeys.includes(e.key) || e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir Alt + apapun
+        if (e.altKey) {
+            e.preventDefault();
+            return false;
+        }
+    }, { capture: true });
+    
+    // ========== LAPIS 6: Deteksi dan Blokir DevTools ==========
+    let devtoolsDetected = false;
+    
+    function detectDevTools() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > 100 || heightDiff > 100 || window.Firebug) {
+            if (!devtoolsDetected) {
+                devtoolsDetected = true;
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:999999;font-size:20px;">🚫 Akses Ditolak - DevTools Terdeteksi 🚫</div>';
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 500);
+    
+    // ========== LAPIS 7: Mencegah Debugging ==========
+    console.log = function() {};
+    console.debug = function() {};
+    console.info = function() {};
+    
+    function disableBreakpoints() {
+        const startTime = Date.now();
+        debugger;
+        const endTime = Date.now();
+        if (endTime - startTime > 100) {
+            window.location.reload();
+        }
+    }
+    
+    setInterval(disableBreakpoints, 100);
+    
+    // ========== LAPIS 8: Enkripsi CSSOM ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        ::selection {
+            background: transparent !important;
+        }
+        
+        ::-moz-selection {
+            background: transparent !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // ========== LAPIS 9: Bersihkan Clipboard ==========
+    function clearClipboard() {
+        try {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('').catch(() => {});
+            }
+            if (window.clipboardData) {
+                window.clipboardData.setData('Text', '');
+            }
+        } catch(e) {}
+    }
+    
+    setInterval(clearClipboard, 500);
+    
+    // ========== LAPIS 10: Blokir Save Image ==========
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+    });
+    
+    // ========== LAPIS 11: Deteksi Bot ==========
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'php', 'java', 'perl', 'ruby', 'node'
+    ];
+    
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isBot = botPatterns.some(pattern => userAgent.includes(pattern));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Access Denied</h1>';
+        throw new Error('Bot detected');
+    }
+    
+    // ========== LAPIS 12: Cegah iframe ==========
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+    
+})();
+</script><!-- STRONG ANTI COPY PROTECTION - VERSI DIPERBAIKI -->
+<script>
+(function() {
+    'use strict';
+    
+    // ========== LAPIS 1: HAPUS OBFUSCATE TEXT (TIDAK DIPERLUKAN) ==========
+    // function obfuscateText() sudah dihapus karena mengganggu tampilan
+    
+    // ========== LAPIS 2: Overlay Invisible untuk Mencegah Seleksi ==========
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 999999;
+        pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+    
+    // ========== LAPIS 3: Blokir Semua Event ==========
+    const blockEvents = ['copy', 'cut', 'paste', 'dragstart', 'drop', 'contextmenu', 'selectstart', 'selectionchange'];
+    blockEvents.forEach(eventType => {
+        document.addEventListener(eventType, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+    
+    // ========== LAPIS 4: Hapus Clipboard Data ==========
+    setInterval(() => {
+        try {
+            window.clipboardData && window.clipboardData.setData('text', '');
+            navigator.clipboard && navigator.clipboard.writeText('');
+        } catch(e) {}
+    }, 100);
+    
+    // ========== LAPIS 5: Blokir Shortcut Lebih Agresif ==========
+    const blockedKeys = [
+        'c', 'x', 'v', 's', 'p', 'u', 'a',
+        'F12', 'PrintScreen', 'Insert'
+    ];
+    
+    document.addEventListener('keydown', (e) => {
+        // Blokir Ctrl/Command + apapun
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir F12 dan tombol fungsi
+        if (blockedKeys.includes(e.key) || e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir Alt + apapun
+        if (e.altKey) {
+            e.preventDefault();
+            return false;
+        }
+    }, { capture: true });
+    
+    // ========== LAPIS 6: Deteksi dan Blokir DevTools ==========
+    let devtoolsDetected = false;
+    
+    function detectDevTools() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > 100 || heightDiff > 100 || window.Firebug) {
+            if (!devtoolsDetected) {
+                devtoolsDetected = true;
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:999999;font-size:20px;">🚫 Akses Ditolak - DevTools Terdeteksi 🚫</div>';
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 500);
+    
+    // ========== LAPIS 7: Mencegah Debugging ==========
+    console.log = function() {};
+    console.debug = function() {};
+    console.info = function() {};
+    
+    function disableBreakpoints() {
+        const startTime = Date.now();
+        debugger;
+        const endTime = Date.now();
+        if (endTime - startTime > 100) {
+            window.location.reload();
+        }
+    }
+    
+    setInterval(disableBreakpoints, 100);
+    
+    // ========== LAPIS 8: Enkripsi CSSOM ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        ::selection {
+            background: transparent !important;
+        }
+        
+        ::-moz-selection {
+            background: transparent !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // ========== LAPIS 9: Bersihkan Clipboard ==========
+    function clearClipboard() {
+        try {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('').catch(() => {});
+            }
+            if (window.clipboardData) {
+                window.clipboardData.setData('Text', '');
+            }
+        } catch(e) {}
+    }
+    
+    setInterval(clearClipboard, 500);
+    
+    // ========== LAPIS 10: Blokir Save Image ==========
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+    });
+    
+    // ========== LAPIS 11: Deteksi Bot ==========
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'php', 'java', 'perl', 'ruby', 'node'
+    ];
+    
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isBot = botPatterns.some(pattern => userAgent.includes(pattern));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Access Denied</h1>';
+        throw new Error('Bot detected');
+    }
+    
+    // ========== LAPIS 12: Cegah iframe ==========
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+    
+})();
+</script><!-- STRONG ANTI COPY PROTECTION - VERSI DIPERBAIKI -->
+<script>
+(function() {
+    'use strict';
+    
+    // ========== LAPIS 1: HAPUS OBFUSCATE TEXT (TIDAK DIPERLUKAN) ==========
+    // function obfuscateText() sudah dihapus karena mengganggu tampilan
+    
+    // ========== LAPIS 2: Overlay Invisible untuk Mencegah Seleksi ==========
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 999999;
+        pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+    
+    // ========== LAPIS 3: Blokir Semua Event ==========
+    const blockEvents = ['copy', 'cut', 'paste', 'dragstart', 'drop', 'contextmenu', 'selectstart', 'selectionchange'];
+    blockEvents.forEach(eventType => {
+        document.addEventListener(eventType, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+    
+    // ========== LAPIS 4: Hapus Clipboard Data ==========
+    setInterval(() => {
+        try {
+            window.clipboardData && window.clipboardData.setData('text', '');
+            navigator.clipboard && navigator.clipboard.writeText('');
+        } catch(e) {}
+    }, 100);
+    
+    // ========== LAPIS 5: Blokir Shortcut Lebih Agresif ==========
+    const blockedKeys = [
+        'c', 'x', 'v', 's', 'p', 'u', 'a',
+        'F12', 'PrintScreen', 'Insert'
+    ];
+    
+    document.addEventListener('keydown', (e) => {
+        // Blokir Ctrl/Command + apapun
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir F12 dan tombol fungsi
+        if (blockedKeys.includes(e.key) || e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir Alt + apapun
+        if (e.altKey) {
+            e.preventDefault();
+            return false;
+        }
+    }, { capture: true });
+    
+    // ========== LAPIS 6: Deteksi dan Blokir DevTools ==========
+    let devtoolsDetected = false;
+    
+    function detectDevTools() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > 100 || heightDiff > 100 || window.Firebug) {
+            if (!devtoolsDetected) {
+                devtoolsDetected = true;
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:999999;font-size:20px;">🚫 Akses Ditolak - DevTools Terdeteksi 🚫</div>';
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 500);
+    
+    // ========== LAPIS 7: Mencegah Debugging ==========
+    console.log = function() {};
+    console.debug = function() {};
+    console.info = function() {};
+    
+    function disableBreakpoints() {
+        const startTime = Date.now();
+        debugger;
+        const endTime = Date.now();
+        if (endTime - startTime > 100) {
+            window.location.reload();
+        }
+    }
+    
+    setInterval(disableBreakpoints, 100);
+    
+    // ========== LAPIS 8: Enkripsi CSSOM ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        ::selection {
+            background: transparent !important;
+        }
+        
+        ::-moz-selection {
+            background: transparent !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // ========== LAPIS 9: Bersihkan Clipboard ==========
+    function clearClipboard() {
+        try {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('').catch(() => {});
+            }
+            if (window.clipboardData) {
+                window.clipboardData.setData('Text', '');
+            }
+        } catch(e) {}
+    }
+    
+    setInterval(clearClipboard, 500);
+    
+    // ========== LAPIS 10: Blokir Save Image ==========
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+    });
+    
+    // ========== LAPIS 11: Deteksi Bot ==========
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'php', 'java', 'perl', 'ruby', 'node'
+    ];
+    
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isBot = botPatterns.some(pattern => userAgent.includes(pattern));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Access Denied</h1>';
+        throw new Error('Bot detected');
+    }
+    
+    // ========== LAPIS 12: Cegah iframe ==========
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+    
+})();
+</script><!-- STRONG ANTI COPY PROTECTION - VERSI DIPERBAIKI -->
+<script>
+(function() {
+    'use strict';
+    
+    // ========== LAPIS 1: HAPUS OBFUSCATE TEXT (TIDAK DIPERLUKAN) ==========
+    // function obfuscateText() sudah dihapus karena mengganggu tampilan
+    
+    // ========== LAPIS 2: Overlay Invisible untuk Mencegah Seleksi ==========
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 999999;
+        pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+    
+    // ========== LAPIS 3: Blokir Semua Event ==========
+    const blockEvents = ['copy', 'cut', 'paste', 'dragstart', 'drop', 'contextmenu', 'selectstart', 'selectionchange'];
+    blockEvents.forEach(eventType => {
+        document.addEventListener(eventType, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+    
+    // ========== LAPIS 4: Hapus Clipboard Data ==========
+    setInterval(() => {
+        try {
+            window.clipboardData && window.clipboardData.setData('text', '');
+            navigator.clipboard && navigator.clipboard.writeText('');
+        } catch(e) {}
+    }, 100);
+    
+    // ========== LAPIS 5: Blokir Shortcut Lebih Agresif ==========
+    const blockedKeys = [
+        'c', 'x', 'v', 's', 'p', 'u', 'a',
+        'F12', 'PrintScreen', 'Insert'
+    ];
+    
+    document.addEventListener('keydown', (e) => {
+        // Blokir Ctrl/Command + apapun
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir F12 dan tombol fungsi
+        if (blockedKeys.includes(e.key) || e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir Alt + apapun
+        if (e.altKey) {
+            e.preventDefault();
+            return false;
+        }
+    }, { capture: true });
+    
+    // ========== LAPIS 6: Deteksi dan Blokir DevTools ==========
+    let devtoolsDetected = false;
+    
+    function detectDevTools() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > 100 || heightDiff > 100 || window.Firebug) {
+            if (!devtoolsDetected) {
+                devtoolsDetected = true;
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:999999;font-size:20px;">🚫 Akses Ditolak - DevTools Terdeteksi 🚫</div>';
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 500);
+    
+    // ========== LAPIS 7: Mencegah Debugging ==========
+    console.log = function() {};
+    console.debug = function() {};
+    console.info = function() {};
+    
+    function disableBreakpoints() {
+        const startTime = Date.now();
+        debugger;
+        const endTime = Date.now();
+        if (endTime - startTime > 100) {
+            window.location.reload();
+        }
+    }
+    
+    setInterval(disableBreakpoints, 100);
+    
+    // ========== LAPIS 8: Enkripsi CSSOM ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        ::selection {
+            background: transparent !important;
+        }
+        
+        ::-moz-selection {
+            background: transparent !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // ========== LAPIS 9: Bersihkan Clipboard ==========
+    function clearClipboard() {
+        try {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('').catch(() => {});
+            }
+            if (window.clipboardData) {
+                window.clipboardData.setData('Text', '');
+            }
+        } catch(e) {}
+    }
+    
+    setInterval(clearClipboard, 500);
+    
+    // ========== LAPIS 10: Blokir Save Image ==========
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+    });
+    
+    // ========== LAPIS 11: Deteksi Bot ==========
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'php', 'java', 'perl', 'ruby', 'node'
+    ];
+    
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isBot = botPatterns.some(pattern => userAgent.includes(pattern));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Access Denied</h1>';
+        throw new Error('Bot detected');
+    }
+    
+    // ========== LAPIS 12: Cegah iframe ==========
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+    
+})();
+</script>
+  <!-- STRONG ANTI COPY PROTECTION - VERSI DIPERBAIKI -->
+<script>
+(function() {
+    'use strict';
+    
+    // ========== LAPIS 1: HAPUS OBFUSCATE TEXT (TIDAK DIPERLUKAN) ==========
+    // function obfuscateText() sudah dihapus karena mengganggu tampilan
+    
+    // ========== LAPIS 2: Overlay Invisible untuk Mencegah Seleksi ==========
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 999999;
+        pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+    
+    // ========== LAPIS 3: Blokir Semua Event ==========
+    const blockEvents = ['copy', 'cut', 'paste', 'dragstart', 'drop', 'contextmenu', 'selectstart', 'selectionchange'];
+    blockEvents.forEach(eventType => {
+        document.addEventListener(eventType, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+    
+    // ========== LAPIS 4: Hapus Clipboard Data ==========
+    setInterval(() => {
+        try {
+            window.clipboardData && window.clipboardData.setData('text', '');
+            navigator.clipboard && navigator.clipboard.writeText('');
+        } catch(e) {}
+    }, 100);
+    
+    // ========== LAPIS 5: Blokir Shortcut Lebih Agresif ==========
+    const blockedKeys = [
+        'c', 'x', 'v', 's', 'p', 'u', 'a',
+        'F12', 'PrintScreen', 'Insert'
+    ];
+    
+    document.addEventListener('keydown', (e) => {
+        // Blokir Ctrl/Command + apapun
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir F12 dan tombol fungsi
+        if (blockedKeys.includes(e.key) || e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir Alt + apapun
+        if (e.altKey) {
+            e.preventDefault();
+            return false;
+        }
+    }, { capture: true });
+    
+    // ========== LAPIS 6: Deteksi dan Blokir DevTools ==========
+    let devtoolsDetected = false;
+    
+    function detectDevTools() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > 100 || heightDiff > 100 || window.Firebug) {
+            if (!devtoolsDetected) {
+                devtoolsDetected = true;
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:999999;font-size:20px;">🚫 Akses Ditolak - DevTools Terdeteksi 🚫</div>';
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 500);
+    
+    // ========== LAPIS 7: Mencegah Debugging ==========
+    console.log = function() {};
+    console.debug = function() {};
+    console.info = function() {};
+    
+    function disableBreakpoints() {
+        const startTime = Date.now();
+        debugger;
+        const endTime = Date.now();
+        if (endTime - startTime > 100) {
+            window.location.reload();
+        }
+    }
+    
+    setInterval(disableBreakpoints, 100);
+    
+    // ========== LAPIS 8: Enkripsi CSSOM ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        ::selection {
+            background: transparent !important;
+        }
+        
+        ::-moz-selection {
+            background: transparent !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // ========== LAPIS 9: Bersihkan Clipboard ==========
+    function clearClipboard() {
+        try {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('').catch(() => {});
+            }
+            if (window.clipboardData) {
+                window.clipboardData.setData('Text', '');
+            }
+        } catch(e) {}
+    }
+    
+    setInterval(clearClipboard, 500);
+    
+    // ========== LAPIS 10: Blokir Save Image ==========
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+    });
+    
+    // ========== LAPIS 11: Deteksi Bot ==========
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'php', 'java', 'perl', 'ruby', 'node'
+    ];
+    
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isBot = botPatterns.some(pattern => userAgent.includes(pattern));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Access Denied</h1>';
+        throw new Error('Bot detected');
+    }
+    
+    // ========== LAPIS 12: Cegah iframe ==========
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+    
+})();
+</script>
+  
+  <!-- STRONG ANTI COPY PROTECTION -->
+<script>
+(function() {
+    'use strict';
+    
+    // ========== LAPIS 1: HAPUS SEMUA TEKS DARI DOM ==========
+    // Simpan teks asli di attribute, tampilkan hanya secara visual
+    function obfuscateText() {
+        const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, div, li, a');
+        elements.forEach(el => {
+            if (el.children.length === 0 && el.innerText && el.innerText.trim().length > 0) {
+                const originalText = el.innerText;
+                el.setAttribute('data-original', originalText);
+                // Encode teks ke HTML entities
+                const encoded = originalText.split('').map(char => {
+                    return '&#' + char.charCodeAt(0) + ';';
+                }).join('');
+                el.innerHTML = encoded;
+            }
+        });
+    }
+    
+    // ========== LAPIS 2: Overlay Invisible untuk Mencegah Seleksi ==========
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 999999;
+        pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+    
+    // ========== LAPIS 3: Blokir Semua Event ==========
+    const blockEvents = ['copy', 'cut', 'paste', 'dragstart', 'drop', 'contextmenu', 'selectstart', 'selectionchange'];
+    blockEvents.forEach(eventType => {
+        document.addEventListener(eventType, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+    
+    // ========== LAPIS 4: Hapus Clipboard Data ==========
+    setInterval(() => {
+        try {
+            window.clipboardData && window.clipboardData.setData('text', '');
+            navigator.clipboard && navigator.clipboard.writeText('');
+        } catch(e) {}
+    }, 100);
+    
+    // ========== LAPIS 5: Blokir Shortcut Lebih Agresif ==========
+    const blockedKeys = [
+        'c', 'x', 'v', 's', 'p', 'u', 'a',
+        'F12', 'PrintScreen', 'Insert'
+    ];
+    
+    document.addEventListener('keydown', (e) => {
+        // Blokir Ctrl/Command + apapun
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir F12 dan tombol fungsi
+        if (blockedKeys.includes(e.key) || e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Blokir Alt + apapun
+        if (e.altKey) {
+            e.preventDefault();
+            return false;
+        }
+    }, { capture: true });
+    
+    // ========== LAPIS 6: Deteksi dan Blokir DevTools ==========
+    let devtoolsDetected = false;
+    
+    function detectDevTools() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > 100 || heightDiff > 100 || window.Firebug) {
+            if (!devtoolsDetected) {
+                devtoolsDetected = true;
+                // Clear seluruh halaman
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:999999;font-size:20px;">🚫 Akses Ditolak - DevTools Terdeteksi 🚫</div>';
+                // Redirect atau kosongkan
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 500);
+    
+    // ========== LAPIS 7: Mencegah Debugging ==========
+    // Nonaktifkan console.log
+    console.log = function() {};
+    console.debug = function() {};
+    console.info = function() {};
+    
+    // Nonaktifkan breakpoints
+    function disableBreakpoints() {
+        const startTime = Date.now();
+        debugger;
+        const endTime = Date.now();
+        if (endTime - startTime > 100) {
+            // Debugger terdeteksi
+            window.location.reload();
+        }
+    }
+    
+    setInterval(disableBreakpoints, 100);
+    
+    // ========== LAPIS 8: Enkripsi CSSOM ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Mencegah selection dengan berbagai cara */
+        * {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        /* Mencegah highlighting */
+        ::selection {
+            background: transparent !important;
+        }
+        
+        ::-moz-selection {
+            background: transparent !important;
+        }
+        
+        /* Mencegah copy dari pseudo-elements */
+        *:before, *:after {
+            display: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // ========== LAPIS 9: Bersihkan Clipboard Setiap Detik ==========
+    function clearClipboard() {
+        try {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('').catch(() => {});
+            }
+            if (window.clipboardData) {
+                window.clipboardData.setData('Text', '');
+            }
+        } catch(e) {}
+    }
+    
+    setInterval(clearClipboard, 500);
+    
+    // ========== LAPIS 10: Obfuscate Source Code ==========
+    // Jalankan obfuscateText setelah DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', obfuscateText);
+    } else {
+        obfuscateText();
+    }
+    
+    // ========== LAPIS 11: Blokir Save Image/Media ==========
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.style.pointerEvents = 'none';
+        img.setAttribute('draggable', 'false');
+    });
+    
+    // ========== LAPIS 12: Deteksi Bot/Crawler ==========
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'php', 'java', 'perl', 'ruby', 'node'
+    ];
+    
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isBot = botPatterns.some(pattern => userAgent.includes(pattern));
+    
+    if (isBot) {
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Access Denied</h1>';
+        throw new Error('Bot detected');
+    }
+    
+    // ========== LAPIS 13: Redirect jika menggunakan iframe ==========
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+    
+})();
+</script>
+
+<!-- CSS tambahan untuk mencegah visual selection -->
+<style>
+    /* Mencegah text selection secara visual */
+    body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: default;
+    }
+    
+    /* Mencegah selection highlight */
+    ::selection {
+        background: transparent;
+        color: inherit;
+    }
+    
+    ::-moz-selection {
+        background: transparent;
+        color: inherit;
+    }
+    
+    /* Mencegah drag */
+    img, a, div {
+        -webkit-user-drag: none;
+        user-drag: none;
+    }
+</style>
+  
+</head>
+<body>
+
+<div class="music-player-wrapper">
+  <button class="play-pause-btn" id="playPauseBtn">
+    <i class="fas fa-play" id="playPauseIcon"></i>
+  </button>
+  
+  <div class="music-icon">
+    <i class="fas fa-music"></i>
+  </div>
+  
+  <div class="progress-area">
+    <div class="progress-container" id="progressBarContainer">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="time-info">
+      <span class="current-time" id="currentTime">0:00</span>
+      <span class="duration-time" id="durationTime">0:00</span>
+    </div>
+  </div>
+  
+  <div class="music-equalizer" id="equalizer">
+    <div class="equalizer-bar"></div>
+    <div class="equalizer-bar"></div>
+    <div class="equalizer-bar"></div>
+    <div class="equalizer-bar"></div>
+    <div class="equalizer-bar"></div>
+  </div>
+</div>
+
+<audio id="musicPlayer" preload="auto"></audio>
+
+<div class="linktree-card">
+  <div class="profile-header">
+    <div class="logo-wrapper">
+      <img class="rounded-logo" 
+           src="https://risrfgvolfxuavpsmfjn.supabase.co/storage/v1/object/public/uploads/1776266573652-winv8pc3.jpg" 
+           alt="Logo Profil Bulat"
+           id="profileLogo">
+    </div>
+    <div class="name">
+      Ibnu Rif'ah
+    </div>
+    <div class="bio" style="display:flex; align-items:center; width:fit-content; margin:0 auto;">
+      NúkEásy_Site
+      <svg style="width:15px; height:15px; margin-left:4px;" viewBox="0 0 24 24" fill="#1DA1F2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.5283 1.5999C11.7686 1.29437 12.2314 1.29437 12.4717 1.5999L14.2805 3.90051C14.4309 4.09173 14.6818 4.17325 14.9158 4.10693L17.7314 3.3089C18.1054 3.20292 18.4799 3.475 18.4946 3.86338L18.6057 6.78783C18.615 7.03089 18.77 7.24433 18.9984 7.32823L21.7453 8.33761C22.1101 8.47166 22.2532 8.91189 22.0368 9.23478L20.4078 11.666C20.2724 11.8681 20.2724 12.1319 20.4078 12.334L22.0368 14.7652C22.2532 15.0881 22.1101 15.5283 21.7453 15.6624L18.9984 16.6718C18.77 16.7557 18.615 16.9691 18.6057 17.2122L18.4946 20.1366C18.4799 20.525 18.1054 20.7971 17.7314 20.6911L14.9158 19.8931C14.6818 19.8267 14.4309 19.9083 14.2805 20.0995L12.4717 22.4001C12.2314 22.7056 11.7686 22.7056 11.5283 22.4001L9.71949 20.0995C9.56915 19.9083 9.31823 19.8267 9.08421 19.8931L6.26856 20.6911C5.89463 20.7971 5.52014 20.525 5.50539 20.1366L5.39427 17.2122C5.38503 16.9691 5.22996 16.7557 5.00164 16.6718L2.25467 15.6624C1.88986 15.5283 1.74682 15.0881 1.96317 14.7652L3.59221 12.334C3.72761 12.1319 3.72761 11.8681 3.59221 11.666L1.96317 9.23478C1.74682 8.91189 1.88986 8.47166 2.25467 8.33761L5.00165 7.32823C5.22996 7.24433 5.38503 7.03089 5.39427 6.78783L5.50539 3.86338C5.52014 3.475 5.89463 3.20292 6.26857 3.3089L9.08421 4.10693C9.31823 4.17325 9.56915 4.09173 9.71949 3.90051L11.5283 1.5999Z" fill="#1DA1F2"/>
+        <path d="M9 12L11 14L15 10" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    
+    <div class="stats-row">
+      <div class="stat-item">
+        <i class="fas fa-eye"></i>
+        <span>Views:</span>
+        <span class="count-number" id="visitorCount">0</span>
+      </div>
+      <div class="stat-item like-btn" id="likeButton">
+        <i class="far fa-heart" id="heartIcon"></i>
+        <span>Likes:</span>
+        <span class="count-number" id="likeCount">0</span>
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <div class="links-container">
+    <a href="#" class="social-link" target="_blank" id="whatsappLink" data-platform="whatsapp">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#" class="social-link" target="_blank" id="telegramLink" data-platform="telegram">
+      <i class="fab fa-telegram-plane"></i>
+      <span>Telegram</span>
+    </a>
+    <a href="#" class="social-link" target="_blank" id="tiktokLink" data-platform="tiktok">
+      <i class="fab fa-tiktok"></i>
+      <span>TikTok</span>
+    </a>
+    <a href="#" class="social-link" target="_blank" id="instagramLink" data-platform="instagram">
+      <i class="fab fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+    <a href="#" class="social-link" target="_blank" id="youtubeLink" data-platform="youtube">
+      <i class="fab fa-youtube"></i>
+      <span>YouTube</span>
+    </a>
+    <a href="#" class="social-link wa-channel" target="_blank" id="waChannelLink">
+      <i class="fas fa-bullhorn"></i>
+      <span>WhatsApp Channel</span>
+    </a>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-link"></i>  
+    contact nuk on social media
+  </div>
+</div>
+
+<script>
+  // ========== SOSIAL MEDIA LINKS ==========
+  const socialUrls = {
+    whatsapp: "https://wa.me/6285820511163",
+    telegram: "https://t.me/NyXuQi",
+    tiktok: "https://tiktok.com/@nuk2008.07.29",
+    instagram: "https://www.instagram.com/i_ibnu2008?igsh=eHhveW4wbTc0bzE2",
+    youtube: "https://youtube.com/@nukkreal?si=yZ_PSk5kQnG0loHS",
+    waChannel: "https://whatsapp.com/channel/0029Vb6hL9pGufJ38JTojQ3e"
+  };
+
+  document.getElementById("whatsappLink").href = socialUrls.whatsapp;
+  document.getElementById("telegramLink").href = socialUrls.telegram;
+  document.getElementById("tiktokLink").href = socialUrls.tiktok;
+  document.getElementById("instagramLink").href = socialUrls.instagram;
+  document.getElementById("youtubeLink").href = socialUrls.youtube;
+  document.getElementById("waChannelLink").href = socialUrls.waChannel;
+
+  // ========== MODERN MUSIC PLAYER ==========
+  (function() {
+    const audio = document.getElementById('musicPlayer');
+    const btn = document.getElementById('playPauseBtn');
+    const icon = document.getElementById('playPauseIcon');
+    const progressFill = document.getElementById('progressFill');
+    const progressContainer = document.getElementById('progressBarContainer');
+    const currentTimeSpan = document.getElementById('currentTime');
+    const durationTimeSpan = document.getElementById('durationTime');
+    const equalizer = document.getElementById('equalizer');
+    
+    audio.src = "https://risrfgvolfxuavpsmfjn.supabase.co/storage/v1/object/public/uploads/1776271036227-5d6whiib.mp3";
+    
+    let isPlaying = false;
+    
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return "0:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return mins + ":" + (secs < 10 ? "0" + secs : secs);
+    }
+    
+    function togglePlayPause() {
+      if (isPlaying) {
+        audio.pause();
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play');
+        equalizer.classList.remove('playing');
+      } else {
+        audio.play().catch(e => console.log('Audio error:', e));
+        icon.classList.remove('fa-play');
+        icon.classList.add('fa-pause');
+        equalizer.classList.add('playing');
+      }
+      isPlaying = !isPlaying;
+    }
+    
+    btn.addEventListener('click', togglePlayPause);
+    
+    audio.addEventListener('loadedmetadata', function() {
+      durationTimeSpan.textContent = formatTime(audio.duration);
+    });
+    
+    audio.addEventListener('timeupdate', function() {
+      if (audio.duration && !isNaN(audio.duration)) {
+        var percent = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = percent + '%';
+        currentTimeSpan.textContent = formatTime(audio.currentTime);
+      }
+    });
+    
+    progressContainer.addEventListener('click', function(e) {
+      var rect = progressContainer.getBoundingClientRect();
+      var clickX = e.clientX - rect.left;
+      var width = rect.width;
+      var percent = clickX / width;
+      if (audio.duration && !isNaN(audio.duration)) {
+        audio.currentTime = percent * audio.duration;
+      }
+    });
+    
+    audio.addEventListener('ended', function() {
+      isPlaying = false;
+      icon.classList.remove('fa-pause');
+      icon.classList.add('fa-play');
+      equalizer.classList.remove('playing');
+      progressFill.style.width = '0%';
+      currentTimeSpan.textContent = "0:00";
+    });
+  })();
+
+  // ========== KONFIGURASI SUPABASE ==========
+  const SUPABASE_URL = 'https://gpjwjvhxswgknrqhgmud.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_P-JyPUbH-BZxSnlYeF04Ng_MgYNXzWa';
+
+  // ========== FUNGSI SUPABASE ==========
+  async function getStats() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/stats?select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      });
+      const data = await res.json();
+      return data[0];
+    } catch (error) {
+      console.error('Error getStats:', error);
+      return { total_likes: 0, total_views: 0 };
+    }
+  }
+
+  async function updateStats(likes, views) {
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/stats?id=eq.1`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ total_likes: likes, total_views: views })
+      });
+    } catch (error) {
+      console.error('Error updateStats:', error);
+    }
+  }
+
+  // ========== SISTEM VIEW GLOBAL ==========
+  async function recordGlobalView() {
+    const hasViewed = localStorage.getItem('hasViewedGlobal');
+    const stats = await getStats();
+    let newViews = stats.total_views;
+    
+    if (!hasViewed) {
+      newViews++;
+      await updateStats(stats.total_likes, newViews);
+      localStorage.setItem('hasViewedGlobal', 'true');
+    }
+    document.getElementById('visitorCount').innerText = newViews;
+  }
+
+  // ========== SISTEM LIKE GLOBAL ==========
+  async function setupGlobalLike() {
+    const stats = await getStats();
+    document.getElementById('likeCount').innerText = stats.total_likes;
+    
+    const hasLiked = localStorage.getItem('hasLikedGlobal');
+    const likeBtn = document.getElementById('likeButton');
+    const heartIcon = document.getElementById('heartIcon');
+    
+    if (hasLiked === 'true') {
+      likeBtn.classList.add('liked');
+      heartIcon.classList.remove('far');
+      heartIcon.classList.add('fas');
+    }
+    
+    likeBtn.addEventListener('click', async () => {
+      if (localStorage.getItem('hasLikedGlobal') === 'true') return;
+      
+      const current = await getStats();
+      const newLikes = current.total_likes + 1;
+      await updateStats(newLikes, current.total_views);
+      
+      document.getElementById('likeCount').innerText = newLikes;
+      localStorage.setItem('hasLikedGlobal', 'true');
+      heartIcon.classList.remove('far');
+      heartIcon.classList.add('fas');
+      likeBtn.classList.add('liked');
+    });
+  }
+
+  // ========== EKSEKUSI ==========
+  recordGlobalView();
+  setupGlobalLike();
+</script>
+
+</body>
+</html>
